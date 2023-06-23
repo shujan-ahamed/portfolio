@@ -1,0 +1,215 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+    
+<section class="home-slider owl-carousel js-fullheight">
+    <div class="slider-item js-fullheight">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row slider-text align-items-center text-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+            <p><a href="#" class="scroll">Hello! I'm</a></p>
+            <h1 class="mb-3" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Radoun Shujan</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slider-item js-fullheight">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row slider-text align-items-center text-center justify-content-center" data-scrollax-parent="true">
+          <div class="col-md-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
+            <p><a href="#" class="scroll">I'm from Bangladesh</a></p>
+            <h1 class="mb-3" data-scrollax="properties: {translateY: '30%', opacity: 1.6}">A Web Developer</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- END slider -->
+
+  <section class="ftco-section about-section">
+    <div class="container">
+      <div class="row d-flex" data-scrollax-parent="true">
+        <div class="col-md-4 author-img" style="background-image: url({% static 'images/radoun_shujan.jpg' %});" data-scrollax=" properties: { translateY: '-70%'}"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-6 wrap ftco-animate">
+          <div class="about-desc">
+            <h1 class="bold-text">About</h1>
+            <div class="p-5">
+              <h2 class="mb-5">Hi! I'm {{resume}}</h2>
+              <p>{{resume.description}}</p>
+              <p><a href="#">Checkout my resume</a></p>
+              <ul class="ftco-footer-social list-unstyled mt-4">
+                {% if resume.twitter_link %}
+                <li><a href="{{resume.twitter_link}}"><span class="icon-twitter"></span></a></li>
+                {% endif %}
+                {% if resume.fb_link %}
+                <li><a href="{{resume.fb_link}}"><span class="icon-facebook"></span></a></li>
+                {% endif %}
+                {% if resume.linkedin_link %}
+                <li><a href="{{resume.linkedin_link}}"><span class="icon-linkedin"></span></a></li>
+                {% endif %}
+                {% if resume.wp_link %}
+                <li><a href="https://wa.me/{{resume.wp_link}}"><span class="icon-whatsapp"></span></a></li>
+                {% endif %}
+              </ul>
+              <h5>Contact me here!</h5>
+              <p>Email: <a href="#">{{resume.email}}</a></p>
+              <p>Phone: <a href="#">{{resume.phone}}</a></p>
+            </div>
+            <div class='more_btn'>
+              <p><a href="{% url 'resume' %}" class='btn btn-small'>See More</a></p>
+            
+            <div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ftco-section">
+    <div class="container mt-5">
+      <div class="row justify-content-center mb-5 pb-5">
+        <div class="col-md-7 text-center heading-section ftco-animate">
+          <span>What i do</span>
+          <h2>My services</h2>
+        </div>
+      </div>
+      <!--  web cat  -->
+      
+      {% if web_cats %}
+      
+      <div class="row">
+        <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+          <div class="media block-6 services p-3 py-4 d-block text-center">
+            <div class="icon mb-3"><span class="icon-layers"></span></div>
+            <div class="media-body">
+              
+              {% for web_cat in web_cats %}
+                <h3 class="heading">{{web_cat}}</h3>
+              {% endfor %}
+            </div>
+          </div>
+        </div>  
+      {% endif %}
+        
+        <!--  Features  -->
+        {% if features %}
+      
+        <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+          <div class="media block-6 services p-3 py-4 d-block text-center">
+            <div class="icon mb-3"><span class="icon-gears"></span></div>
+            <div class="media-body">
+              {% for feature in features %}
+                <h3 class="heading">{{feature}}</h3>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+        <!--  Lang  -->
+        {% if languages %}
+      
+        <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+          <div class="media block-6 services p-3 py-4 d-block text-center">
+            <div class="icon mb-3"><span class="icon-code"></span></div>
+            <div class="media-body">
+              {% for language in languages %}
+                <h3 class="heading">{{language}}</h3>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <section class="ftco-section">
+    <div class="container">
+      <div class="row justify-content-center mb-5 pb-5">
+        <div class="col-md-7 text-center heading-section ftco-animate">
+          <span>Portfolio</span>
+          <h2>Checkout a few of my works</h2>
+        </div>
+      </div>
+      {% for portfolio in  portfolios %} 
+      <div data='{{forloop.counter}}' class="block-3  d-md-flex ftco-animate" data-scrollax-parent="true">
+        <a
+          href="{{portfolio.url}}"
+          class="image {% if  forloop.counter|divisibleby:2  %}order-2{% endif %} d-flex justify-content-center align-items-center"
+          style="background-image: url('{{portfolio.image.url}}'); background-size:contain"
+          data-scrollax=" properties: { translateY: '-30%'}"
+        >
+          <div
+            class="icon d-flex text-center justify-content-center align-items-center"
+          >
+            <span class="icon-search"></span>
+          </div>
+        </a>
+        <div class="text">
+          <h4 class="subheading">{{portfolio.type}}</h4>
+          <h2 class="heading">
+            <a href="portfolio-single.html"
+              >{{portfolio.title}}</a
+            >
+          </h2>
+          <p>
+            {{portfolio.description}}
+          </p>
+          <p><a href="{{portfolio.url}}">View Project</a></p>
+        </div>
+      </div>
+        
+      {% endfor %}
+    </div>
+    </div>
+  </section>
+ 
+{% if achievement %}
+  <section class="ftco-section ftco-counter" id="section-counter">
+    <div class="container">
+      <div class="row justify-content-center mb-5 pb-5">
+        <div class="col-md-7 text-center heading-section ftco-animate">
+          <span>Portfolio</span>
+          <h2>I love to share my achievements</h2>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-start">
+        <div class="col-md-5 col-sm-5 counter-wrap ftco-animate">
+          <div class="block-18">
+            <div class="text">
+              <span class="ftco-label">Clients</span>
+              <strong class="number" data-number="{{achievement.client}}">0</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-5 col-sm-5 counter-wrap ftco-animate">
+          <div class="block-18">
+            <div class="text">
+              <span class="ftco-label">Project done</span>
+              <strong class="number" data-number="{{achievement.projects}}">0</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-end">
+        <div class="col-md-5 counter-wrap ftco-animate">
+          <div class="block-18">
+            <div class="text">
+              <span class="ftco-label">Cups of coffee</span>
+              <strong class="number" data-number="{{achievement.coffee}}">0</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}
+  
+{% endblock content %}

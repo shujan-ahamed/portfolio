@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+{% include 'includes/alerts.html' %}
+<section class="ftco-section">
+  <div class="container mt-5">
+    <div class="row justify-content-center mb-5 pb-5">
+      <div class="col-md-7 text-center heading-section ftco-animate">
+        <span>Blog</span>
+        <h2>Read our blog</h2>
+      </div>
+    </div>
+    
+    {% if request.user.is_authenticated and request.user.is_superuser %}
+    <div class='col-sm-12 '>
+      {% comment %} {{form.as_p}} {% endcomment %}
+     
+      <form action="{% url 'blog' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+          <div class="row">
+            <div class="col-sm-12">
+              
+              <div class="form-group"><label>Title : </label>
+                {{form.title}}
+              </div>
+            </div>
+            {% comment %} <div class="col-sm-12">
+              
+              <div class="form-group">
+                <label>Tags : </label>
+                {{form.tags}}
+              </div>
+                
+            </div> {% endcomment %}
+              <div class="col-sm-12">
+                <div class="form-group">
+                  <label>cover photo : </label>
+                  {{form.cover_photo}}
+                </div>
+                <label class="text-danger">{{ profile_form.profile_picture.errors }}</label>
+              </div>
+            
+            <div class="col-sm-12">
+              
+              <div class="form-group"><label>Body : </label>
+                {{form.blog}}
+              </div>
+            </div>
+            
+            
+            </div>
+            
+          </div>
+          <div class='blog-btn '>
+            <p><a type='submit' class='btn btn-small'>submit</a></p>
+          </div>
+              
+      </form>
+      <ul class="errorlist">
+        {% for field in form %}
+        {% if field.errors %}
+        {% for error in field.errors %}
+        <li style="color: red;">{{error}}</li>
+        {% endfor %}
+        {% endif %}
+        {% endfor %}
+
+        <li style="color: red;">{{form.non_field_errors}}</li>
+    </ul>
+    </div> 
+    <hr><hr><hr>
+    {% endif %}
+      
+    <div class="container">
+
+    <div class="row mt-5">
+      
+      {% if blogs %}
+      
+      {% for blog in blogs  %}
+      
+      <div class="col-md-4 ftco-animate">
+        <div class="blog-entry">
+          
+          {% if  blog.cover_photo %}
+          
+          <a
+            href="{% url 'blog_details' blog.slug %}"
+            class="block-20"
+            style="background-image: url('{{blog.cover_photo.url}}')"
+          >
+          </a>
+            
+          {% endif %}
+            
+          <div class="text p-4 d-block">
+            <div class="meta mb-3">
+              <div><a href="#">{{blog.updated_date.date}}</a></div>
+              <div><a href="#">Admin</a></div>
+              <div>
+                <a href="#" class="meta-chat"
+                  ><span class="icon-chat"></span> 3</a
+                >
+              </div>
+            </div>
+            <h3 class="heading">
+              <a href="{% url 'blog_details' blog.slug %}"
+                >{{blog.title}}</a
+              >
+            </h3>
+          </div>
+        </div>
+      </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+
+    
+    
+    <div class="row mt-5">
+      <div class="col text-center">
+        <div class="block-27">
+          <ul>
+            <li><a href="#">&lt;</a></li>
+            <li class="active"><span>1</span></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">&gt;</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

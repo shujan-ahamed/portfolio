@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<section class="ftco-section">
+  <div class="container mt-5">
+    <div class="row justify-content-center mb-5 pb-5">
+      <div class="col-md-7 text-center heading-section ftco-animate">
+        <span>What i do</span>
+        <h2>My services</h2>
+      </div>
+    </div>
+    <!--  web cat  -->
+    
+    {% if web_cats %}
+    
+    <div class="row">
+      <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+        <div class="media block-6 services p-3 py-4 d-block text-center">
+          <div class="icon mb-3"><span class="icon-layers"></span></div>
+          <div class="media-body">
+            
+            {% for web_cat in web_cats %}
+              <h3 class="heading">{{web_cat}}</h3>
+            {% endfor %}
+          </div>
+        </div>
+      </div>  
+    {% endif %}
+      
+      <!--  Features  -->
+      {% if features %}
+    
+      <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+        <div class="media block-6 services p-3 py-4 d-block text-center">
+          <div class="icon mb-3"><span class="icon-gears"></span></div>
+          <div class="media-body">
+            {% for feature in features %}
+              <h3 class="heading">{{feature}}</h3>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+      <!--  Lang  -->
+      {% if languages %}
+    
+      <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+        <div class="media block-6 services p-3 py-4 d-block text-center">
+          <div class="icon mb-3"><span class="icon-code"></span></div>
+          <div class="media-body">
+            {% for language in languages %}
+              <h3 class="heading">{{language}}</h3>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% endblock content %}

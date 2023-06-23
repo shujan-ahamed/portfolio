@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+
+<section class="ftco-section contact-section">
+    <div class="container mt-5">
+      <div class="row d-flex mb-5 contact-info">
+        <div class="col-md-12 mb-4">
+          <h2 class="h4">Contact Information</h2>
+        </div>
+        <div class="w-100"></div>
+        <div class="col-md-3">
+          <p><span>Address:</span> {{resume.adress}}</p>
+        </div>
+        <div class="col-md-3">
+          <p><span>Phone:</span> <a href="tel://1234567920">{{resume.phone}}</a></p>
+        </div>
+        <div class="col-md-3">
+          <p><span>Email:</span> <a href="mailto:info@yoursite.com">{{resume.email}}</a></p>
+        </div>
+        <div class="col-md-3">
+          {% if resume.wp_link %}
+          <span>Call on Whatsapp:</span>
+            <a href="https://wa.me/{{resume.wp_link}}"><span class="icon-whatsapp"></span></a>
+          {% endif %}
+        </div>
+      </div>
+      <div class="row block-9">
+        <div class="col-md-12 pr-md-5">
+          <form
+            class="form-contact contact_form"
+            action="{% url 'contact' %}"
+            method="POST"
+            id="contactForm"
+          >
+          {% csrf_token %}
+            <div class="form-group">
+              <input name="name" type="text" class="form-control" placeholder="Your Name" required>
+            </div>
+            <div class="form-group">
+              <input name="email" type="email" class="form-control" placeholder="Your Email" required>
+            </div>
+            <div class="form-group">
+              <input name="subject" type="text" class="form-control" placeholder="Subject" required>
+            </div>
+            <div class="form-group">
+              <textarea name="message" id="" cols="30" rows="7" class="form-control" placeholder="Message" required></textarea>
+            </div>
+            <div class="form-group">
+              <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+            </div>
+          </form>
+          {% include 'includes/alerts.html' %}
+      </div>
+    </div>
+  </section>
+
+
+{% endblock content %}
