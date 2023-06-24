@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-hx16lg^u@!6r*q**o^-&widb=9!wvagjx8$alz&_b8so^4*!--
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app' , '.now.sh', '*']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -58,6 +58,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'PortfolioMain.urls'
+
 
 TEMPLATES = [
     {
