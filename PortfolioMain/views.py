@@ -31,7 +31,7 @@ def home(request):
 
 
 def contact(request):
-    resume = Resume.objects.get()
+    resume = Resume.objects.get().first()
     current_site = get_current_site(request)
     if request.method == "POST":
         name = request.POST['name']
