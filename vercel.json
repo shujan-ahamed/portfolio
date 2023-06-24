@@ -24,7 +24,7 @@
         },
         {
             "src": "/(.*)",
-            "dest": "poll/wsgi.py"
+            "dest": "PortfolioMain/wsgi.py"
         }
     ]
 }
