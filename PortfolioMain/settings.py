@@ -28,6 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*', 'https://portfolio-production-b3e6.up.railway.app']
 
 CSRF_TRUSTED_ORIGINS = ['https://portfolio-production-b3e6.up.railway.app','https://*.127.0.0.1']
+
 # Application definition
 
 INSTALLED_APPS = [
