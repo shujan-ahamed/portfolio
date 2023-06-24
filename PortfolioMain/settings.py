@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'blog',
 
     'admin_honeypot',
-    'django_social_share'
+    'django_social_share',
+    'whitenoise.runserver_nostatic',
 
 
 ]
@@ -71,6 +72,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                "whitenoise.middleware.WhiteNoiseMiddleware",
             ],
         },
     },
@@ -139,7 +141,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / "static"
 STATICFILES_DIRS = ["PortfolioMain/static"]
-
+STATICFILES_STORAGE="whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
