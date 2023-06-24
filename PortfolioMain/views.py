@@ -10,7 +10,7 @@ from django.contrib.sites.shortcuts import get_current_site
 
 def home(request):
     portfolios = Portfolio.objects.all()[:5]
-    resume = Resume.objects.get()
+    resume = Resume.objects.filter().first()
     achievement = Achivements.objects.filter().first()
 
     languages = Languages.objects.all()
@@ -31,7 +31,7 @@ def home(request):
 
 
 def contact(request):
-    resume = Resume.objects.get().first()
+    resume = Resume.objects.filter().first()
     current_site = get_current_site(request)
     if request.method == "POST":
         name = request.POST['name']
@@ -69,7 +69,7 @@ def contact(request):
 
     
 def resume(request):
-    resume = Resume.objects.get()
+    resume = Resume.objects.filter().first()
     experiences = Experience.objects.all()
     educations = Education.objects.all()
     skills = Skills.objects.all()
