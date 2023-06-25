@@ -99,7 +99,7 @@ DATABASES = {
 }
 
 
-# Password validation
+# Password valid
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -119,6 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
+
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 LANGUAGE_CODE = 'en-us'
 
@@ -150,7 +151,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 
-# django_project/settings.py
+#  django_project/settings.py
 DEFAULT_FROM_EMAIL = "work.shujan@gmail.com"
 EMAIL_HOST = "smtp.sendgrid.net"
 EMAIL_HOST_USER = "apikey"
