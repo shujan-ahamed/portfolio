@@ -10,8 +10,7 @@ from django.conf.urls.static import static
 urlpatterns = [
 
     path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
-    path('dashboard/', include('admin_honeypot.urls', namespace='admin_honeypot')),
-
+    
     path('secure_admin/', admin.site.urls),
     path('', home, name='home'),
     path('contact/', contact, name='contact'),
