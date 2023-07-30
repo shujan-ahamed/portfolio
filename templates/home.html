@@ -32,8 +32,8 @@
   <section class="ftco-section about-section">
     <div class="container">
       <div class="row d-flex" data-scrollax-parent="true">
-        <div class="col-md-4 author-img" style="background-image: url({% static 'images/radoun_shujan.jpg' %});" data-scrollax=" properties: { translateY: '-70%'}"></div>
-        <div class="col-md-2"></div>
+        <div class="col-md-5 author-img" style="background-image: url({{resume.image.url}});" data-scrollax=" properties: { translateY: '-70%'}"></div>
+        <div class="col-md-1"></div>
         <div class="col-md-6 wrap ftco-animate">
           <div class="about-desc">
             <h1 class="bold-text">About</h1>
@@ -61,11 +61,13 @@
               <h5>Contact me here!</h5>
               <p>Email: <a href="#">{{resume.email}}</a></p>
               <p>Phone: <a href="#">{{resume.phone}}</a></p>
+
+              <div class='more_btn'>
+                <p><a href="{% url 'resume' %}" class='btn btn-small'>See More</a></p>
+              
+              <div>
             </div>
-            <div class='more_btn'>
-              <p><a href="{% url 'resume' %}" class='btn btn-small'>See More</a></p>
             
-            <div>
           
           </div>
         </div>
