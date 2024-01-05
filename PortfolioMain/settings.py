@@ -152,10 +152,10 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 
 #  django_project/settings.py
-DEFAULT_FROM_EMAIL = "work.shujan@gmail.com"
+DEFAULT_FROM_EMAIL = "ahamedshujan00@gmail.com"
 EMAIL_HOST = "smtp.sendgrid.net"
 EMAIL_HOST_USER = "apikey"
-EMAIL_HOST_PASSWORD = "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"
+EMAIL_HOST_PASSWORD = "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"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
