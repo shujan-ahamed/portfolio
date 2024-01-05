@@ -83,7 +83,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'PortfolioMain.wsgi.application'
 
-
+#sss
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
